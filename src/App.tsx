@@ -1,19 +1,15 @@
-import ListGroup from "./components/ListGroup"
+import { useState } from "react"
 import Alert from "./components/Alert"
+import Button from "./components/Button"
 function App() {
-  let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"]
-  const handleSelected = (item: string) => {
-    console.log(item)
-  }
+  const [alertVisible, setAletVisibility] = useState(false)
   return (
     <div>
-      {/* ts在编译时就能找到错误 */}
-      <ListGroup
-        items={items}
-        heading={"Cities"}
-        onSelectedItem={handleSelected}
-      />
-      {/* <Alert /> */}
+      {alertVisible && (
+        <Alert onClose={() => setAletVisibility(false)}>My Alert</Alert>
+      )}
+
+      <Button onClick={() => setAletVisibility(true)}>My Button</Button>
     </div>
   )
 }
