@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react"
+import styles from "./ListGroup.module.css"
 interface Prop {
   //ts定义一个接口
   items: string[]
@@ -16,7 +17,7 @@ function ListGroup({ items, heading, onSelectedItem }: Prop) {
       <h1>{heading}</h1>
       {/* 使用&& 左侧表达式的值相当于一个开关 */}
       {items.length === 0 && <p>No item found</p>}
-      <ul className="list-group">
+      <ul className={[styles.ListGroup, styles.container].join(" ")}>
         {items.map((item, index) => (
           <li
             className={
